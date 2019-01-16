@@ -5,12 +5,12 @@
     xmlns:local="using:cppApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Foreground="#FF86A6AC" Height="auto" Width="auto" Background="#FF86A6AC">
+    mc:Ignorable="d" Foreground="#FF313839" Height="auto" Width="auto" Background="#FF313839">
 
-    <Grid Height="400" Width="500">
-        <Button x:Name="button" Content="Press" HorizontalAlignment="Left" Margin="209,145,0,0" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="258,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Black"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="130,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-
+    <Grid Height="500" Width="500">
+        <Button x:Name="button" Content="Press" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32" Margin="215,205,0,0"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Height="32" Width="32" Margin="283,131,0,0" Foreground="#FFDBDBDB"/>
+        <TextBox x:Name="firstTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,97,0,0"/>
+        <TextBox x:Name="secTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,147,0,0"/>
     </Grid>
 </Page>

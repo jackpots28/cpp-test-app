@@ -41,7 +41,12 @@ void ::cppApp::MainPage::Connect(int __connectionId, ::Platform::Object^ __targe
             break;
         case 3:
             {
-                this->textBox = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+                this->firstTextBox = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+            }
+            break;
+        case 4:
+            {
+                this->secTextBox = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             }
             break;
     }

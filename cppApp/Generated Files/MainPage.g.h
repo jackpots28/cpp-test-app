@@ -36,7 +36,8 @@ namespace cppApp
     
         private: ::Windows::UI::Xaml::Controls::Button^ button;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ textBox;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ secTextBox;
     };
 }
 

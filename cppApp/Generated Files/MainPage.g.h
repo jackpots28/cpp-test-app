@@ -14,6 +14,7 @@ namespace Windows {
                 ref class Button;
                 ref class TextBlock;
                 ref class TextBox;
+                ref class CheckBox;
             }
         }
     }
@@ -34,10 +35,15 @@ namespace cppApp
     private:
         bool _contentLoaded;
     
-        private: ::Windows::UI::Xaml::Controls::Button^ button;
-        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock;
+        private: ::Windows::UI::Xaml::Controls::Button^ calculate;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ outputBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ secTextBox;
+        private: ::Windows::UI::Xaml::Controls::CheckBox^ checkBox;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ firstValBox;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ secValBox;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ frstIndexTitleBox;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ quantTitleBox;
     };
 }
 

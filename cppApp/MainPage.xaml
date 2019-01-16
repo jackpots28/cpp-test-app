@@ -5,12 +5,23 @@
     xmlns:local="using:cppApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Foreground="#FF313839" Height="auto" Width="auto" Background="#FF313839">
+    mc:Ignorable="d" Foreground="#FFD5E2E5" Height="auto" Width="auto" Background="#FFD5E2E5">
 
     <Grid Height="500" Width="500">
-        <Button x:Name="button" Content="Press" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32" Margin="215,205,0,0"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Height="32" Width="32" Margin="283,131,0,0" Foreground="#FFDBDBDB"/>
-        <TextBox x:Name="firstTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,97,0,0"/>
-        <TextBox x:Name="secTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,147,0,0"/>
+        <Button x:Name="calculate" Content="Press" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32" Margin="215,205,0,0"/>
+        <TextBlock x:Name="outputBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Height="19" Width="87" Margin="247,92,0,0" Foreground="#FF181818"/>
+        <TextBox x:Name="firstTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,85,0,0"/>
+        <TextBox x:Name="secTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,147,0,0" IsEnabled="False" Visibility="Collapsed"/>
+        <CheckBox x:Name="checkBox" Content="Check for subtraction" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" IsEnabled="False" Visibility="Collapsed"/>
+        <TextBlock x:Name="firstValBox" HorizontalAlignment="Left" Margin="54,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            <Run Foreground="#FF181818" Text="Search Value: "/>
+        </TextBlock>
+        <TextBlock x:Name="secValBox" HorizontalAlignment="Left" Margin="364,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text=""/>
+        <TextBlock x:Name="frstIndexTitleBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"  Height="42" Width="87" Margin="247,33,0,0" Foreground="#FF181818">
+            <Run Text="First index of"/>
+            <LineBreak/>
+            <Run Text="search:"/>
+        </TextBlock>
+        <TextBlock x:Name="quantTitleBox" HorizontalAlignment="Left" Margin="364,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text="Quantity of searched value:  "/>
     </Grid>
 </Page>

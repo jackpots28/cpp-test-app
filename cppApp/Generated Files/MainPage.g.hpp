@@ -29,14 +29,14 @@ void ::cppApp::MainPage::Connect(int __connectionId, ::Platform::Object^ __targe
     {
         case 1:
             {
-                this->button = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
-                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->button))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
+                this->calculate = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->calculate))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::Button_Click);
             }
             break;
         case 2:
             {
-                this->textBlock = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+                this->outputBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
             }
             break;
         case 3:
@@ -47,6 +47,33 @@ void ::cppApp::MainPage::Connect(int __connectionId, ::Platform::Object^ __targe
         case 4:
             {
                 this->secTextBox = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+            }
+            break;
+        case 5:
+            {
+                this->checkBox = safe_cast<::Windows::UI::Xaml::Controls::CheckBox^>(__target);
+                (safe_cast<::Windows::UI::Xaml::Controls::CheckBox^>(this->checkBox))->Checked += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
+                    (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::CheckBox_Checked);
+            }
+            break;
+        case 6:
+            {
+                this->firstValBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 7:
+            {
+                this->secValBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 8:
+            {
+                this->frstIndexTitleBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 9:
+            {
+                this->quantTitleBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
             }
             break;
     }

@@ -13,7 +13,7 @@
         <TextBox x:Name="firstTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,85,0,0"/>
         <TextBox x:Name="secTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,147,0,0" IsEnabled="False" Visibility="Collapsed"/>
         <CheckBox x:Name="checkBox" Content="Check for subtraction" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" IsEnabled="False" Visibility="Collapsed"/>
-        <TextBlock x:Name="firstValBox" HorizontalAlignment="Left" Margin="54,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+        <TextBlock x:Name="inputTxtBlock" HorizontalAlignment="Left" Margin="54,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
             <Run Foreground="#FF181818" Text="Search Value: "/>
         </TextBlock>
         <TextBlock x:Name="secValBox" HorizontalAlignment="Left" Margin="364,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text=""/>

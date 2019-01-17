@@ -58,7 +58,7 @@ void ::cppApp::MainPage::Connect(int __connectionId, ::Platform::Object^ __targe
             break;
         case 6:
             {
-                this->firstValBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+                this->inputTxtBlock = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
             }
             break;
         case 7:

@@ -14,8 +14,9 @@ public:
 
 	void setSrch(double tmpSrch);
 	
-
 private:
+	wstring formattedText;
+	string classConstruct;
 	ptrdiff_t pos;
 	vector<double> tmpVec;
 	double srch;

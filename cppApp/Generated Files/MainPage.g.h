@@ -40,7 +40,7 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ secTextBox;
         private: ::Windows::UI::Xaml::Controls::CheckBox^ checkBox;
-        private: ::Windows::UI::Xaml::Controls::TextBlock^ firstValBox;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ inputTxtBlock;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ secValBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ frstIndexTitleBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ quantTitleBox;

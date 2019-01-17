@@ -8,6 +8,10 @@
 #include "MainPage.xaml.h"
 #include <iostream>
 #include <memory>
+#include <random>
+#include <string>
+#include <sstream>
+
 
 using std::unique_ptr;
 using namespace std;
@@ -29,35 +33,42 @@ MainPage::MainPage()
 	InitializeComponent();
 }
 
-unique_ptr<testerFile> obj1(new testerFile);
+//unique_ptr<testerFile> testClassObj(new testerFile);
 
 void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
+	unique_ptr<testerFile> testClassObj(new testerFile);
 
 	String^ srchValText = firstTextBox->Text;
+	String^ paraString;
+
 	//String^ s1 = secTextBox->Text;
 
 	double dSrchVal = _wtof(srchValText->Data());
-	obj1->setSrch(dSrchVal);
+	testClassObj->setSrch(dSrchVal);
 
 	//double b = _wtof(s1->Data());
 
 	double posOfSrch = 0.0;
 	double quantOfSrch = 0.0;
 
-	obj1->refVecSrchAndCount(posOfSrch, quantOfSrch);
+	testClassObj->refVecSrchAndCount(posOfSrch, quantOfSrch);
 	secValBox->Text = (quantOfSrch.ToString());
 
+	paraString = posOfSrch.ToString();
+
 	if (posOfSrch == -1) {
-		outputBox->Text = "Val not found.";
+		outputBox->Text = "Not found.";
 	}
 	else {
 		outputBox->Text = (posOfSrch.ToString());
 	}
 
-	// "firstValBox" = srch index
+	auto formattedText = wstring(paraString->Data()).append(L"\n");
+	OutputDebugString(formattedText.c_str());
+
+	// "outputBox" = srch index
 	// "secValBox" = quantity of
-	
 }
 
 

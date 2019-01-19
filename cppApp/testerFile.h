@@ -4,8 +4,8 @@
 
 using namespace std;
 
-class testerFile
-{
+
+class testerFile {
 public:
 	testerFile();
 	~testerFile();

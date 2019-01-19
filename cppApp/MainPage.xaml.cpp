@@ -5,12 +5,16 @@
 
 #include "pch.h"
 #include "testerFile.h"
+#include "childClassTest.h"
 #include "MainPage.xaml.h"
+#include <stdlib.h>
+
 #include <iostream>
 #include <memory>
 #include <random>
 #include <string>
 #include <sstream>
+
 
 
 using std::unique_ptr;
@@ -28,17 +32,18 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
+
 MainPage::MainPage()
 {
 	InitializeComponent();
 }
 
-//unique_ptr<testerFile> testClassObj(new testerFile);
+
+unique_ptr<testerFile> testClassObj(new testerFile());
+unique_ptr<childClassTest> childTestObj(new childClassTest());
 
 void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	unique_ptr<testerFile> testClassObj(new testerFile);
-
 	String^ srchValText = firstTextBox->Text;
 	String^ paraString;
 
@@ -46,8 +51,10 @@ void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 
 	double dSrchVal = _wtof(srchValText->Data());
 	testClassObj->setSrch(dSrchVal);
+		
 
 	//double b = _wtof(s1->Data());
+	//firstTextBox->Text = (childTestObj->getSrch()).ToString();
 
 	double posOfSrch = 0.0;
 	double quantOfSrch = 0.0;
@@ -65,12 +72,11 @@ void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 	}
 
 	auto formattedText = wstring(paraString->Data()).append(L"\n");
-	OutputDebugString(formattedText.c_str());
+	OutputDebugString(formattedText.c_str()); 
 
 	// "outputBox" = srch index
 	// "secValBox" = quantity of
 }
-
 
 void cppApp::MainPage::CheckBox_Checked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {

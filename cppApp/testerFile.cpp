@@ -12,14 +12,14 @@ using namespace std;
 using execution::par_unseq;
 using std::unique_ptr;
 
-size_t testSize = 2'000'000;
+size_t testSize = 5'000'000;
 
-unique_ptr<childClassTest> objTest1(new childClassTest);
+unique_ptr<childClassTest> obj1(new childClassTest());
 
-testerFile::testerFile() {	
+testerFile::testerFile() {
 	tmpVec.resize(testSize);
 	for (auto& d : tmpVec) {
-		d = (rand() % 100);
+		d = (rand() % 1000);
 	}
 
 	classConstruct = "--testerFile obj created--\n";
@@ -27,7 +27,6 @@ testerFile::testerFile() {
 	copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
 	OutputDebugString(formattedText.c_str());
 }
-
 
 testerFile::~testerFile() {
 	tmpVec.clear();

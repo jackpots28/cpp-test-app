@@ -76,6 +76,56 @@ void ::cppApp::MainPage::Connect(int __connectionId, ::Platform::Object^ __targe
                 this->quantTitleBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
             }
             break;
+        case 10:
+            {
+                this->compartTitleNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 11:
+            {
+                this->addContact = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+            }
+            break;
+        case 12:
+            {
+                this->srchContact = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+            }
+            break;
+        case 13:
+            {
+                this->personName = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+            }
+            break;
+        case 14:
+            {
+                this->findPerson = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+            }
+            break;
+        case 15:
+            {
+                this->personNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+            }
+            break;
+        case 16:
+            {
+                this->titlePersonName = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 17:
+            {
+                this->titlePersonNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 18:
+            {
+                this->srchResultNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 19:
+            {
+                this->compartTitle = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
     }
     _contentLoaded = true;
 }

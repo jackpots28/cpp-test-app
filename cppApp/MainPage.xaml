@@ -5,25 +5,45 @@
     xmlns:local="using:cppApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Foreground="#FFEFD094" Height="auto" Width="auto" Background="#FFEFD094"
-    >
+    mc:Ignorable="d" Foreground="#FFF1F2FF" Height="auto" Width="auto" Background="#FFF1F2FF">
     
-    
-    <Grid Height="500" Width="500">       
-        <Button x:Name="calculate" Content="Press" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32" Margin="206,211,0,0"/>
-        <TextBlock x:Name="outputBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Height="19" Width="87" Margin="238,98,0,0" Foreground="#FF181818"/>
-        <TextBox x:Name="firstTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="142,91,0,0"/>
-        <TextBox x:Name="secTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,147,0,0" IsEnabled="False" Visibility="Collapsed"/>
-        <CheckBox x:Name="checkBox" Content="Check for subtraction" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" IsEnabled="False" Visibility="Collapsed"/>
-        <TextBlock x:Name="inputTxtBlock" HorizontalAlignment="Left" Margin="45,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
+    <Grid Height="500" Width="500">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="200" Margin="39,284,0,0" VerticalAlignment="Top" Width="426">
+            <Canvas HorizontalAlignment="Left" Height="200" Margin="-1" VerticalAlignment="Top" Width="426">
+                <Button x:Name="addContact" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="78"/>
+                <Button x:Name="srchContact" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="115"/>
+                <TextBox x:Name="personName" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" Canvas.Left="114" Canvas.Top="78"/>
+                <TextBox x:Name="findPerson" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" Canvas.Left="114" Canvas.Top="115"/>
+                <TextBox x:Name="personNumber" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Canvas.Left="255" Canvas.Top="78"/>
+                <TextBlock x:Name="titlePersonName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Person name:" VerticalAlignment="Top" Foreground="Black" Canvas.Left="127" Canvas.Top="45"/>
+                <TextBlock x:Name="titlePersonNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Person number:" VerticalAlignment="Top" Foreground="Black" Canvas.Left="275" Canvas.Top="45"/>
+                <TextBlock x:Name="srchResultNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Black" Height="32" Width="140" Canvas.Left="255" Canvas.Top="115"/>
+                <TextBlock x:Name="compartTitle" Canvas.Left="170" TextWrapping="Wrap" Canvas.Top="10" Foreground="Black" FontWeight="Bold"><Underline>person Lookup</Underline></TextBlock>
+
+            </Canvas>
+        </Border>
+
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="250" Margin="39,10,0,0" VerticalAlignment="Top" Width="426" IsTapEnabled="False" IsRightTapEnabled="False" IsDoubleTapEnabled="False" IsHoldingEnabled="False">
+            <Canvas HorizontalAlignment="Left" Height="245" Margin="-1,0" VerticalAlignment="Top" Width="426">
+                <Button x:Name="calculate" Content="Press" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32" Canvas.Left="191" Canvas.Top="191"/>
+                <TextBlock x:Name="outputBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Height="19" Width="87" Foreground="#FF181818" Canvas.Left="199" Canvas.Top="121"/>
+                <TextBox x:Name="firstTextBox" HorizontalAlignment="Left" TextAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Canvas.Left="117" Canvas.Top="116"/>
+                <TextBox x:Name="secTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,147,0,0" IsEnabled="False" Visibility="Collapsed"/>
+                <CheckBox x:Name="checkBox" Content="Check for subtraction" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" IsEnabled="False" Visibility="Collapsed"/>
+                <TextBlock x:Name="inputTxtBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="19" Canvas.Top="120">
             <Run Foreground="#FF181818" Text="Search Value: "/>
-        </TextBlock>
-        <TextBlock x:Name="secValBox" HorizontalAlignment="Left" Margin="355,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text=""/>
-        <TextBlock x:Name="frstIndexTitleBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"  Height="42" Width="87" Margin="238,39,0,0" Foreground="#FF181818">
+                </TextBlock>
+                <TextBlock x:Name="secValBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text="" Canvas.Left="312" Canvas.Top="120"/>
+                <TextBlock x:Name="frstIndexTitleBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"  Height="42" Width="87" Foreground="#FF181818" Canvas.Left="200" Canvas.Top="62">
             <Run Text="First index of"/>
             <LineBreak/>
             <Run Text="search:"/>
-        </TextBlock>
-        <TextBlock x:Name="quantTitleBox" HorizontalAlignment="Left" Margin="355,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text="Quantity of searched value:  "/>
+                </TextBlock>
+                <TextBlock x:Name="quantTitleBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text="Quantity of searched value:  " Canvas.Left="314" Canvas.Top="46"/>
+                <TextBlock x:Name="compartTitleNumber" Canvas.Left="174" TextWrapping="Wrap" Canvas.Top="16" Foreground="Black" FontWeight="Bold"><Underline>vector Search</Underline></TextBlock>
+            </Canvas>
+        </Border>
+
     </Grid>
 </Page>

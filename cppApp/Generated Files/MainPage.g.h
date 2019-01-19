@@ -44,6 +44,16 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::TextBlock^ secValBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ frstIndexTitleBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ quantTitleBox;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ compartTitleNumber;
+        private: ::Windows::UI::Xaml::Controls::Button^ addContact;
+        private: ::Windows::UI::Xaml::Controls::Button^ srchContact;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ personName;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ findPerson;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ personNumber;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ titlePersonName;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ titlePersonNumber;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ srchResultNumber;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ compartTitle;
     };
 }
 

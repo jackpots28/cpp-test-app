@@ -34,3 +34,4 @@ int childClassTest::findValInTable(string srchKey) {
 		return itr->second;
 	}
 }
+

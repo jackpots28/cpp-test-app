@@ -1,9 +1,4 @@
-﻿//
-// MainPage.xaml.h
-// Declaration of the MainPage class.
-//
-
-#pragma once
+﻿#pragma once
 
 #include "MainPage.g.h"
 
@@ -20,5 +15,7 @@ namespace cppApp
 	private:
 		void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void CheckBox_Checked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void AddContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void SrchContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

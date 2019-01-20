@@ -1,25 +1,20 @@
-﻿//
-// MainPage.xaml.cpp
-// Implementation of the MainPage class.
-//
-
+﻿
 #include "pch.h"
 #include "testerFile.h"
 #include "childClassTest.h"
 #include "MainPage.xaml.h"
 #include <stdlib.h>
-
+#include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <random>
 #include <string>
 #include <sstream>
-
-
+#include <cwctype>
+#include <optional>
 
 using std::unique_ptr;
 using namespace std;
-
 using namespace cppApp;
 using namespace Platform;
 using namespace Windows::Foundation;
@@ -47,14 +42,8 @@ void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 	String^ srchValText = firstTextBox->Text;
 	String^ paraString;
 
-	//String^ s1 = secTextBox->Text;
-
 	double dSrchVal = _wtof(srchValText->Data());
 	testClassObj->setSrch(dSrchVal);
-		
-
-	//double b = _wtof(s1->Data());
-	//firstTextBox->Text = (childTestObj->getSrch()).ToString();
 
 	double posOfSrch = 0.0;
 	double quantOfSrch = 0.0;
@@ -78,7 +67,28 @@ void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 	// "secValBox" = quantity of
 }
 
-void cppApp::MainPage::CheckBox_Checked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	
+	// test -- srchResultNumber->Text = number.ToString();
+	// test -- findPerson->Text = ref new String(name.c_str());
+
+
+	wstring name= ((personName->Text)->Data());
+	transform(name.begin(), name.end(), name.begin(), tolower);
+
+	double number = _wtof((personNumber->Text)->Data());
+	childTestObj->insertIntoHT(name, number);
+
+	personName->Text = "";
+	personNumber->Text = "";
 }
+
+void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	wstring srchName = ((findPerson->Text)->Data());
+	transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
+
+	double returnNum = childTestObj->findValInTable(srchName);
+	numberResult->Text = returnNum.ToString();
+}
+

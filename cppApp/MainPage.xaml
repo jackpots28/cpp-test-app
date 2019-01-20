@@ -5,36 +5,35 @@
     xmlns:local="using:cppApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Foreground="#FFF1F2FF" Height="auto" Width="auto" Background="#FFF1F2FF">
-    
+    mc:Ignorable="d" Foreground="#FF2D2D2D" Height="auto" Width="auto" Background="#FF2D2D2D">
+
     <Grid Height="500" Width="500">
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="200" Margin="39,284,0,0" VerticalAlignment="Top" Width="426">
-            <Canvas HorizontalAlignment="Left" Height="200" Margin="-1" VerticalAlignment="Top" Width="426">
-                <Button x:Name="addContact" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="78"/>
-                <Button x:Name="srchContact" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="115"/>
+        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Left" Height="210" Margin="31,280,0,0" VerticalAlignment="Top" Width="436">
+            <Canvas HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="426" Background="#FFF27980">
+                <Button x:Name="addContact" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="78" Click="AddContact_Click"/>
+                <Button x:Name="srchContact" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="115" Click="SrchContact_Click"/>
                 <TextBox x:Name="personName" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" Canvas.Left="114" Canvas.Top="78"/>
                 <TextBox x:Name="findPerson" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" Canvas.Left="114" Canvas.Top="115"/>
                 <TextBox x:Name="personNumber" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Canvas.Left="255" Canvas.Top="78"/>
                 <TextBlock x:Name="titlePersonName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Person name:" VerticalAlignment="Top" Foreground="Black" Canvas.Left="127" Canvas.Top="45"/>
                 <TextBlock x:Name="titlePersonNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Person number:" VerticalAlignment="Top" Foreground="Black" Canvas.Left="275" Canvas.Top="45"/>
-                <TextBlock x:Name="srchResultNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Black" Height="32" Width="140" Canvas.Left="255" Canvas.Top="115"/>
                 <TextBlock x:Name="compartTitle" Canvas.Left="170" TextWrapping="Wrap" Canvas.Top="10" Foreground="Black" FontWeight="Bold"><Underline>person Lookup</Underline></TextBlock>
+                <TextBlock x:Name="numberResult" TextAlignment="Center" Canvas.Left="255" TextWrapping="Wrap" Text="" Canvas.Top="123" Width="140"/>
 
             </Canvas>
         </Border>
 
 
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="250" Margin="39,10,0,0" VerticalAlignment="Top" Width="426" IsTapEnabled="False" IsRightTapEnabled="False" IsDoubleTapEnabled="False" IsHoldingEnabled="False">
-            <Canvas HorizontalAlignment="Left" Height="245" Margin="-1,0" VerticalAlignment="Top" Width="426">
+        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Left" Height="255" Margin="31,10,0,0" VerticalAlignment="Top" Width="436" IsTapEnabled="False" IsRightTapEnabled="False" IsDoubleTapEnabled="False" IsHoldingEnabled="False">
+            <Canvas HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="426" Background="#FF87D5D0">
                 <Button x:Name="calculate" Content="Press" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32" Canvas.Left="191" Canvas.Top="191"/>
-                <TextBlock x:Name="outputBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Height="19" Width="87" Foreground="#FF181818" Canvas.Left="199" Canvas.Top="121"/>
+                <TextBlock x:Name="outputBox" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Height="19" Width="87" Foreground="#FF181818" Canvas.Left="195" Canvas.Top="120"/>
                 <TextBox x:Name="firstTextBox" HorizontalAlignment="Left" TextAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Canvas.Left="117" Canvas.Top="116"/>
                 <TextBox x:Name="secTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="151,147,0,0" IsEnabled="False" Visibility="Collapsed"/>
-                <CheckBox x:Name="checkBox" Content="Check for subtraction" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" IsEnabled="False" Visibility="Collapsed"/>
                 <TextBlock x:Name="inputTxtBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="19" Canvas.Top="120">
             <Run Foreground="#FF181818" Text="Search Value: "/>
                 </TextBlock>
-                <TextBlock x:Name="secValBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text="" Canvas.Left="312" Canvas.Top="120"/>
+                <TextBlock x:Name="secValBox" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text="" Canvas.Left="303" Canvas.Top="120"/>
                 <TextBlock x:Name="frstIndexTitleBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top"  Height="42" Width="87" Foreground="#FF181818" Canvas.Left="200" Canvas.Top="62">
             <Run Text="First index of"/>
             <LineBreak/>

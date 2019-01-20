@@ -14,7 +14,6 @@ namespace Windows {
                 ref class Button;
                 ref class TextBlock;
                 ref class TextBox;
-                ref class CheckBox;
             }
         }
     }
@@ -39,7 +38,6 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::TextBlock^ outputBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ secTextBox;
-        private: ::Windows::UI::Xaml::Controls::CheckBox^ checkBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ inputTxtBlock;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ secValBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ frstIndexTitleBox;
@@ -52,8 +50,8 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::TextBox^ personNumber;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ titlePersonName;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ titlePersonNumber;
-        private: ::Windows::UI::Xaml::Controls::TextBlock^ srchResultNumber;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ compartTitle;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ numberResult;
     };
 }
 

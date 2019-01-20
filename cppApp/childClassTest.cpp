@@ -1,8 +1,10 @@
+
 #include "pch.h"
 #include "childClassTest.h"
 #include <algorithm>
 #include <string>
 #include <unordered_map>
+#include <optional>
 
 using namespace std;
 
@@ -21,11 +23,11 @@ childClassTest::~childClassTest() {
 	OutputDebugString(formattedText.c_str());
 }
 
-void childClassTest::insertIntoHT(string key, int val) {
+void childClassTest::insertIntoHT(wstring key, double val) {
 	hashTable.insert(make_pair(key, val));
 }
 
-int childClassTest::findValInTable(string srchKey) {
+double childClassTest::findValInTable(wstring srchKey) {
 	itr = hashTable.find(srchKey);
 	if (itr == hashTable.end()) {
 		return -1;

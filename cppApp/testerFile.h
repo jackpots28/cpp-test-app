@@ -2,9 +2,6 @@
 
 #include <vector>
 
-using namespace std;
-
-
 class testerFile {
 public:
 	testerFile();
@@ -15,10 +12,10 @@ public:
 	void setSrch(double tmpSrch);
 	
 private:
-	wstring formattedText;
-	string classConstruct;
+	std::wstring formattedText;
+	std::string classConstruct;
 	ptrdiff_t pos;
-	vector<double> tmpVec;
+	std::vector<double> tmpVec;
 	double srch;
 };
 

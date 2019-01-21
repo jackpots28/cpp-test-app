@@ -5,22 +5,22 @@
 #include <string>
 #include <optional>
 
-using namespace std;
-
 class childClassTest : public testerFile
 {
 public:
 	childClassTest();
 	~childClassTest();
 
-	void insertIntoHT(wstring key, double val);
-	double findValInTable(wstring srchKey);
+	void insertIntoHT(std::wstring key, double val);
+	double findValInTable(std::wstring srchKey);
+
+	void optSearch(std::optional<std::wstring>& optKey, std::optional<double>& optVal);
 
 private:
-	wstring formattedText;
-	string classConstruct;
+	std::wstring formattedText;
+	std::string classConstruct;
 
-	unordered_map<wstring, double> hashTable;
-	unordered_map<wstring, double>::const_iterator itr;
+	std::unordered_map<std::wstring, double> hashTable;
+	std::unordered_map<std::wstring, double>::const_iterator itr;
 };
 

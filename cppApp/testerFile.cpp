@@ -8,8 +8,7 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-using execution::par_unseq;
+using std::execution::par_unseq;
 using std::unique_ptr;
 
 size_t testSize = 5'000'000;
@@ -24,7 +23,7 @@ testerFile::testerFile() {
 
 	classConstruct = "--testerFile obj created--\n";
 	formattedText.resize((classConstruct.length(), ' '));
-	copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
+	std::copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
 	OutputDebugString(formattedText.c_str());
 }
 
@@ -33,7 +32,7 @@ testerFile::~testerFile() {
 
 	classConstruct = "--testerFile obj Destroyed--\n";
 	formattedText.resize((classConstruct.length(), ' '));
-	copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
+	std::copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
 	OutputDebugString(formattedText.c_str());
 }
 
@@ -42,8 +41,8 @@ void testerFile::setSrch(double tmpSrch) {
 }
 
 void testerFile::refVecSrchAndCount(double& returnPos, double& counterRef){
-	counterRef = count(par_unseq, tmpVec.begin(), tmpVec.end(), srch);
-	pos = distance(tmpVec.begin(), find(par_unseq, tmpVec.begin(), tmpVec.end(), srch));
+	counterRef = std::count(par_unseq, tmpVec.begin(), tmpVec.end(), srch);
+	pos = std::distance(tmpVec.begin(), std::find(par_unseq, tmpVec.begin(), tmpVec.end(), srch));
 	if (pos >= tmpVec.size()) {
 		returnPos  = -1;
 	}

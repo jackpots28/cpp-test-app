@@ -6,28 +6,27 @@
 #include <unordered_map>
 #include <optional>
 
-using namespace std;
+
 
 childClassTest::childClassTest() {
 	classConstruct = "--child obj created--\n";
 	formattedText.resize((classConstruct.length(), ' '));
-	copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
+	std::copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
 	OutputDebugString(formattedText.c_str());
 }
-
 
 childClassTest::~childClassTest() {
 	classConstruct = "--child obj Destroyed--\n";
 	formattedText.resize((classConstruct.length(), ' '));
-	copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
+	std::copy(classConstruct.begin(), classConstruct.end(), formattedText.begin());
 	OutputDebugString(formattedText.c_str());
 }
 
-void childClassTest::insertIntoHT(wstring key, double val) {
-	hashTable.insert(make_pair(key, val));
+void childClassTest::insertIntoHT(std::wstring key, double val) {
+	hashTable.insert(std::make_pair(key, val));
 }
 
-double childClassTest::findValInTable(wstring srchKey) {
+double childClassTest::findValInTable(std::wstring srchKey) {
 	itr = hashTable.find(srchKey);
 	if (itr == hashTable.end()) {
 		return -1;
@@ -37,3 +36,6 @@ double childClassTest::findValInTable(wstring srchKey) {
 	}
 }
 
+void childClassTest::optSearch(std::optional<std::wstring>& optKey, std::optional<double>& optVal) {
+	
+}

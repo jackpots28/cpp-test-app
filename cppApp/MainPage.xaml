@@ -1,14 +1,23 @@
 ﻿<Page
+    
     x:Class="cppApp.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:cppApp"
+  
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Foreground="#FF2D2D2D" Height="auto" Width="auto" Background="#FF2D2D2D">
-
+    
+    <Page.TopAppBar>
+        <AppBar Background="#FFF27980" Opacity="0.5"></AppBar>
+    </Page.TopAppBar>
+    
     <Grid Height="500" Width="500">
-        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Left" Height="210" Margin="31,280,0,0" VerticalAlignment="Top" Width="436">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Left" Height="210" Margin="31,15,0,-30" VerticalAlignment="Top" Width="436" Grid.Row="1">
             <Canvas HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="426" Background="#FFF27980">
                 <Button x:Name="addContact" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="78" Click="AddContact_Click"/>
                 <Button x:Name="srchContact" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="115" Click="SrchContact_Click"/>
@@ -45,4 +54,7 @@
         </Border>
 
     </Grid>
+
+
+
 </Page>

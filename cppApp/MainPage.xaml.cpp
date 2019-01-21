@@ -13,8 +13,10 @@
 #include <cwctype>
 #include <optional>
 
+using std::optional;
+using std::nullopt;
 using std::unique_ptr;
-using namespace std;
+
 using namespace cppApp;
 using namespace Platform;
 using namespace Windows::Foundation;
@@ -60,7 +62,7 @@ void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 		outputBox->Text = (posOfSrch.ToString());
 	}
 
-	auto formattedText = wstring(paraString->Data()).append(L"\n");
+	auto formattedText = std::wstring(paraString->Data()).append(L"\n");
 	OutputDebugString(formattedText.c_str()); 
 
 	// "outputBox" = srch index
@@ -73,8 +75,8 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 	// test -- findPerson->Text = ref new String(name.c_str());
 
 
-	wstring name= ((personName->Text)->Data());
-	transform(name.begin(), name.end(), name.begin(), tolower);
+	std::wstring name= ((personName->Text)->Data());
+	std::transform(name.begin(), name.end(), name.begin(), tolower);
 
 	double number = _wtof((personNumber->Text)->Data());
 	childTestObj->insertIntoHT(name, number);
@@ -85,8 +87,8 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 
 void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	wstring srchName = ((findPerson->Text)->Data());
-	transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
+	std::wstring srchName = ((findPerson->Text)->Data());
+	std::transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
 
 	double returnNum = childTestObj->findValInTable(srchName);
 	numberResult->Text = returnNum.ToString();

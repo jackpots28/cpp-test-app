@@ -7,16 +7,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Foreground="#FF2D2D2D" Height="auto" Width="auto" Background="#FF2D2D2D">
-    
+
     <Page.TopAppBar>
-        <AppBar Background="#FFF27980" Opacity="0.5"></AppBar>
+        <AppBar Background="#4CF27980" Height="69">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="190*"/>
+                    <ColumnDefinition Width="95*"/>
+                    <ColumnDefinition Width="191*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="clearTable" Opacity="0.75" HorizontalAlignment="Center" Grid.Column="0" Content="Clear&#xD;&#xA;Table" Height="56" Width="80" Click="ClearTable_Click" Background="#FF87D5D0"/>
+            </Grid>
+        </AppBar>
     </Page.TopAppBar>
-    
+
     <Grid Height="500" Width="500">
         <Grid.RowDefinitions>
             <RowDefinition Height="48*"/>
             <RowDefinition Height="38*"/>
         </Grid.RowDefinitions>
+        
+    <!--bottom canvas area "person lookup"-->
         <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Left" Height="210" Margin="31,15,0,-30" VerticalAlignment="Top" Width="436" Grid.Row="1">
             <Canvas HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="426" Background="#FFF27980">
                 <Button x:Name="addContact" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="78" Click="AddContact_Click"/>
@@ -28,11 +39,10 @@
                 <TextBlock x:Name="titlePersonNumber" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Person number:" VerticalAlignment="Top" Foreground="Black" Canvas.Left="275" Canvas.Top="45"/>
                 <TextBlock x:Name="compartTitle" Canvas.Left="170" TextWrapping="Wrap" Canvas.Top="10" Foreground="Black" FontWeight="Bold"><Underline>person Lookup</Underline></TextBlock>
                 <TextBlock x:Name="numberResult" TextAlignment="Center" Canvas.Left="255" TextWrapping="Wrap" Text="" Canvas.Top="123" Width="140"/>
-
             </Canvas>
         </Border>
 
-
+    <!--top canvas area "vector search"-->
         <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Left" Height="255" Margin="31,10,0,0" VerticalAlignment="Top" Width="436" IsTapEnabled="False" IsRightTapEnabled="False" IsDoubleTapEnabled="False" IsHoldingEnabled="False">
             <Canvas HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="426" Background="#FF87D5D0">
                 <Button x:Name="calculate" Content="Press" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32" Canvas.Left="191" Canvas.Top="191"/>

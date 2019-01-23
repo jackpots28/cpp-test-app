@@ -39,3 +39,7 @@ double childClassTest::findValInTable(std::wstring srchKey) {
 void childClassTest::optSearch(std::optional<std::wstring>& optKey, std::optional<double>& optVal) {
 	
 }
+
+void childClassTest::clrTable() {
+	hashTable.clear();
+}

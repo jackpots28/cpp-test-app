@@ -3,7 +3,6 @@
 #include <sstream>
 #include <unordered_map>
 
-using namespace std;
 
 class wordFreqUMap
 {
@@ -11,12 +10,12 @@ public:
 	wordFreqUMap();
 	~wordFreqUMap();
 
-	void prntFreq(const wstring &str);
+	void prntFreq(const std::wstring &str);
 
 private:
-	unordered_map<wstring, int> wordList;
-	unordered_map<wstring, int>::iterator itr;
-	wstring word;
+	std::unordered_map<std::wstring, int> wordList;
+	std::unordered_map<std::wstring, int>::iterator itr;
+	std::wstring word;
 };
 
 /*

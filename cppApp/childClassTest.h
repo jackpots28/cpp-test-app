@@ -15,6 +15,7 @@ public:
 	double findValInTable(std::wstring srchKey);
 
 	void optSearch(std::optional<std::wstring>& optKey, std::optional<double>& optVal);
+	void clrTable();
 
 private:
 	std::wstring formattedText;

@@ -91,6 +91,17 @@ void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::
 	std::transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
 
 	double returnNum = childTestObj->findValInTable(srchName);
-	numberResult->Text = returnNum.ToString();
+	if (returnNum == -1) {
+		numberResult->Text = "Not found.";
+	}
+	else {
+		numberResult->Text = returnNum.ToString();
+	}
 }
 
+
+// clears hash table in childClassTest
+void cppApp::MainPage::ClearTable_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	childTestObj->clrTable();
+}

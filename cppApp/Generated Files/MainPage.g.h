@@ -34,6 +34,7 @@ namespace cppApp
     private:
         bool _contentLoaded;
     
+        private: ::Windows::UI::Xaml::Controls::Button^ clearTable;
         private: ::Windows::UI::Xaml::Controls::Button^ calculate;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ outputBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;

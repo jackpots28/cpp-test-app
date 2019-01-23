@@ -4,8 +4,6 @@
 #include <sstream>
 #include <unordered_map>
 
-using namespace std;
-
 wordFreqUMap::wordFreqUMap() {
 
 }
@@ -15,8 +13,8 @@ wordFreqUMap::~wordFreqUMap() {
 
 }
 
-void wordFreqUMap::prntFreq(const wstring& str) {
-	wstringstream ss(str);
+void wordFreqUMap::prntFreq(const std::wstring& str) {
+	std::wstringstream ss(str);
 	while (ss >> word) {
 		wordList[word]++;
 	}

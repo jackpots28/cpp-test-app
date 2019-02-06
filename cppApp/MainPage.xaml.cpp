@@ -1,4 +1,17 @@
-﻿
+﻿//
+//
+//
+//**************************************************************//
+//		Left off on 2-6-2019 ... was working on being able		//
+//		to update the "formsContainerName" platform string		//
+//		need to remove the excess storage strings in the 		//
+//		childClassTest, eg. the methods for storage as well		//
+//**************************************************************//
+//
+//
+//
+
+
 #include "pch.h"
 #include "testerFile.h"
 #include "childClassTest.h"
@@ -11,11 +24,10 @@
 #include <string>
 #include <sstream>
 #include <cwctype>
-#include <optional>
+#include <conio.h>
 
-using std::optional;
-using std::nullopt;
 using std::unique_ptr;
+using std::shared_ptr;
 
 using namespace cppApp;
 using namespace Platform;
@@ -35,9 +47,13 @@ MainPage::MainPage()
 	InitializeComponent();
 }
 
-unique_ptr<testerFile> testClassObj(new testerFile());
-unique_ptr<childClassTest> childTestObj(new childClassTest());
-int counter = 0;
+shared_ptr<testerFile> testClassObj(new testerFile());
+shared_ptr<childClassTest> childTestObj(new childClassTest());
+
+int counter = 0; // counter for word storage in AddContact_Click vector
+
+// Think about coming back in and adding documentation 
+// to what exactly this button click event does
 void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	String^ srchValText = firstTextBox->Text;
@@ -71,6 +87,9 @@ void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 	// "secValBox" = quantity of
 }
 
+
+// Also document this AddContact_Click event
+// look through and references to childClassTest for methods meanings
 void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	// test -- srchResultNumber->Text = number.ToString();
@@ -82,8 +101,10 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 
 	double number = _wtof((personNumber->Text)->Data()); // platform_String converted to double
 	childTestObj->insertIntoHT(name, number);
-
+	
 	formsContainerName->Text += ref new String((childTestObj->getVecString(counter).append(L"\r\n")).c_str()); // wide_string converted to platform_String
+	childTestObj->addToWString(childTestObj->getVecString(counter).append(L"\r\n"));
+
 	formsContainerNumber->Text += "#" + personNumber->Text + "\r\n";
 	indexCounter->Text += (counter.ToString() + "\r\n");
 
@@ -92,18 +113,22 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 	counter += 1;
 }
 
+
+// search hashtable via double "key"
 void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	std::wstring srchName = (findPerson->Text)->Data();
-	std::transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
+	double srchName = _wtof((findPerson->Text)->Data());
+	// std::transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
 
-
-	double returnNum = childTestObj->findValInTable(srchName);
-	if (returnNum == -1) {
+	auto returnNum = childTestObj->findValInTable(srchName);
+	if (returnNum == L"Nil") {
 		numberResult->Text = "Not found.";
+		editForm->IsEnabled = false;
 	}
 	else {
-		numberResult->Text = returnNum.ToString();
+		numberResult->Text = ref new String(returnNum.c_str());
+		editForm->IsEnabled = true;
+		editForm->Background = ref new SolidColorBrush(Windows::UI::ColorHelper::FromArgb(255, 66, 158, 60));
 	}
 	
 }
@@ -116,6 +141,9 @@ void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::
 void cppApp::MainPage::ClearTable_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	childTestObj->clrTable();
+
+	findPerson->Text = "";
+	numberResult->Text = "";
 }
 
 // clears top vector searh for numbers
@@ -132,9 +160,9 @@ void cppApp::MainPage::FillVec_Click(Platform::Object^ sender, Windows::UI::Xaml
 }
 
 // clears both the forms and person lookup vectors
+// also sets "edit" button back to disabled
 void cppApp::MainPage::ClrForms_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-
 	childTestObj->clrFormsVect();
 	childTestObj->clrTable();
 	counter = 0;
@@ -142,4 +170,36 @@ void cppApp::MainPage::ClrForms_Click(Platform::Object^ sender, Windows::UI::Xam
 	formsContainerName->Text = "";
 	formsContainerNumber->Text = "";
 	indexCounter->Text = "";
+
+	findPerson->Text = "";
+	numberResult->Text = "";
+
+	editForm->IsEnabled = false;
+}
+
+
+void cppApp::MainPage::EditForm_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+
+	//**************************************************************//
+	//		This is how I can update the "Forms" Name section		//
+	//		saving a copy of the platform string in a wstring		//
+	//		then editing what I want in the wstring and writing		//
+	//		back to the "formsContainerName" platform string		//
+	//**************************************************************//
+
+	// tmp wide string to hold contents of the formsContainerName platform string
+	std::wstring fndStr = ((formsContainerName->Text)->Data());
+	
+	// this works statically if the first word in the String^ is five characters long
+	// at the end of every word "\r\n" is appended for the newline
+	// come up with a way to edit the string without overwriting the newline characters
+
+	fndStr.at(7) = L'H';
+	fndStr.at(8) = L'o';
+	fndStr.at(9) = L'p';
+	fndStr.at(10) = L'e';
+
+	// rewrite the formsContainerName->Text with the updated tmp wide string
+	formsContainerName->Text = ref new String(fndStr.c_str());
 }

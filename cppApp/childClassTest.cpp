@@ -24,6 +24,7 @@ childClassTest::~childClassTest() {
 
 void childClassTest::insertIntoHT(std::wstring key, double val) {
 	hashTable.insert(std::make_pair(key, val));
+	tmpTestVec.push_back(key);
 }
 
 double childClassTest::findValInTable(std::wstring srchKey) {
@@ -36,8 +37,17 @@ double childClassTest::findValInTable(std::wstring srchKey) {
 	}
 }
 
+
 void childClassTest::optSearch(std::optional<std::wstring>& optKey, std::optional<double>& optVal) {
 	
+}
+
+std::wstring childClassTest::getVecString(int index) {
+	return tmpTestVec.at(index);
+}
+
+void childClassTest::clrFormsVect() {
+	tmpTestVec.clear();
 }
 
 void childClassTest::clrTable() {

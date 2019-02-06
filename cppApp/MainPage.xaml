@@ -9,26 +9,45 @@
     mc:Ignorable="d" Foreground="#FF2D2D2D" Height="auto" Width="auto" Background="#FF2D2D2D">
 
     <Page.TopAppBar>
-        <AppBar Background="#4CF27980" Height="69">
+        <AppBar Background="#FFADADAD" Height="69">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="190*"/>
-                    <ColumnDefinition Width="95*"/>
-                    <ColumnDefinition Width="191*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="clearTable" Opacity="0.75" HorizontalAlignment="Center" Grid.Column="0" Content="Clear&#xD;&#xA;Table" Height="56" Width="80" Click="ClearTable_Click" Background="#FF87D5D0"/>
+                <Button x:Name="clearPersonTable" Grid.Column="0" Content="Clear&#xA;Person Table" Height="56" Width="auto" Click="ClearTable_Click" Background="#FFF27980" Margin="21,7,0,6"/>
+                <Button x:Name="clearVec" Content="Clear&#xA;Numbers Vector" Grid.Column="0" Height="56" Width="auto" Background="#FF87D5D0" Click="ClearVec_Click" Margin="222,7,0,7"/>
+                <Button x:Name="fillVec" Content="Fill&#xD;&#xA;Vector" Grid.Column="0"  Margin="141,7,0,6"  Height="56" Width="auto" Background="#FF87D5D0" Click="FillVec_Click"/>
+                <Button x:Name="clrForms" Content="Clear&#xD;&#xA;Forms" Grid.Column="0"  Margin="363,7,0,6"  Height="56" Width="auto" Background="#FF7DCC78" Click="ClrForms_Click"/>
+
             </Grid>
         </AppBar>
     </Page.TopAppBar>
 
-    <Grid Height="500" Width="500">
+    <Grid Margin="50,68,0,0" Height="660" VerticalAlignment="Top" HorizontalAlignment="Left" Width="865">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="109*"/>
+            <ColumnDefinition Width="64*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="48*"/>
-            <RowDefinition Height="38*"/>
+
         </Grid.RowDefinitions>
-        
-    <!--bottom canvas area "person lookup"-->
-        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Left" Height="210" Margin="31,15,0,-30" VerticalAlignment="Top" Width="436" Grid.Row="1">
+
+        <!--right side canvas-->
+        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Right" Height="548" Margin="0,20,20,0" VerticalAlignment="Top" Width="289" Grid.Column="1">
+            <Canvas HorizontalAlignment="Left" Height="540" VerticalAlignment="Top" Width="280" Background="#FF7DCC78" Margin="0,0,-5,-2">
+                <TextBlock x:Name="textBlock" Canvas.Left="17" TextWrapping="Wrap" Canvas.Top="190">Index</TextBlock>
+
+                <!--edited content-->
+                <TextBlock x:Name="formsTextBlk" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="116" Canvas.Top="15" FontWeight="Bold" Height="22" Width="54"><Underline>Forms</Underline></TextBlock>
+                <TextBlock x:Name="formsContainerName" Canvas.Left="75" TextWrapping="Wrap" TextAlignment="Center" Canvas.Top="222" Height="286" Width="74" Foreground="#FF050505"></TextBlock>
+                <TextBlock x:Name="formsContainerNumber" Canvas.Left="157" TextWrapping="Wrap" TextAlignment="Center" Canvas.Top="222" Height="286" Width="117" Foreground="Black"></TextBlock>
+                <TextBlock x:Name="indexCounter" Canvas.Left="24" TextWrapping="Wrap" TextAlignment="Center" Canvas.Top="222" Height="286" Width="21" Foreground="#FF050505"/>
+
+            </Canvas>
+        </Border>
+
+        <!--bottom canvas area "person lookup"-->
+        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" Height="210" Margin="0,357,35,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="436">
             <Canvas HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="426" Background="#FFF27980">
                 <Button x:Name="addContact" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="78" Click="AddContact_Click"/>
                 <Button x:Name="srchContact" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="115" Click="SrchContact_Click"/>
@@ -42,8 +61,8 @@
             </Canvas>
         </Border>
 
-    <!--top canvas area "vector search"-->
-        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" HorizontalAlignment="Left" Height="255" Margin="31,10,0,0" VerticalAlignment="Top" Width="436" IsTapEnabled="False" IsRightTapEnabled="False" IsDoubleTapEnabled="False" IsHoldingEnabled="False">
+        <!--top canvas area "vector search"-->
+        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" Height="255" Margin="0,20,36,0" VerticalAlignment="Top" IsTapEnabled="False" IsRightTapEnabled="False" IsDoubleTapEnabled="False" IsHoldingEnabled="False" HorizontalAlignment="Right" Width="436">
             <Canvas HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="426" Background="#FF87D5D0">
                 <Button x:Name="calculate" Content="Press" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Width="65" Height="32" Canvas.Left="191" Canvas.Top="191"/>
                 <TextBlock x:Name="outputBox" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Height="19" Width="87" Foreground="#FF181818" Canvas.Left="195" Canvas.Top="120"/>
@@ -60,11 +79,13 @@
                 </TextBlock>
                 <TextBlock x:Name="quantTitleBox" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Foreground="#FF181818" Text="Quantity of searched value:  " Canvas.Left="314" Canvas.Top="46"/>
                 <TextBlock x:Name="compartTitleNumber" Canvas.Left="174" TextWrapping="Wrap" Canvas.Top="16" Foreground="Black" FontWeight="Bold"><Underline>vector Search</Underline></TextBlock>
+                <TextBlock x:Name="vecSize" Canvas.Left="20" TextWrapping="Wrap" Canvas.Top="18">
+                    <Run Text="The vector"/>
+                    <LineBreak/>
+                    <Run Text="size is:"/>
+                </TextBlock>
+                <TextBlock x:Name="outputVecSize" Height="20" Width="100" TextAlignment="Center" Canvas.Left="29" TextWrapping="Wrap" Text="" Canvas.Top="62"/>
             </Canvas>
         </Border>
-
     </Grid>
-
-
-
 </Page>

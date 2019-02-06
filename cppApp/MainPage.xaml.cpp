@@ -35,10 +35,9 @@ MainPage::MainPage()
 	InitializeComponent();
 }
 
-
 unique_ptr<testerFile> testClassObj(new testerFile());
 unique_ptr<childClassTest> childTestObj(new childClassTest());
-
+int counter = 0;
 void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	String^ srchValText = firstTextBox->Text;
@@ -49,9 +48,12 @@ void cppApp::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 
 	double posOfSrch = 0.0;
 	double quantOfSrch = 0.0;
+	int vecSize = testClassObj->getVecSize();
 
 	testClassObj->refVecSrchAndCount(posOfSrch, quantOfSrch);
 	secValBox->Text = (quantOfSrch.ToString());
+
+	outputVecSize->Text = vecSize.ToString();
 
 	paraString = posOfSrch.ToString();
 
@@ -75,20 +77,26 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 	// test -- findPerson->Text = ref new String(name.c_str());
 
 
-	std::wstring name= ((personName->Text)->Data());
+	std::wstring name= ((personName->Text)->Data()); // platform_String converted to wide_string
 	std::transform(name.begin(), name.end(), name.begin(), tolower);
 
-	double number = _wtof((personNumber->Text)->Data());
+	double number = _wtof((personNumber->Text)->Data()); // platform_String converted to double
 	childTestObj->insertIntoHT(name, number);
 
+	formsContainerName->Text += ref new String((childTestObj->getVecString(counter).append(L"\r\n")).c_str()); // wide_string converted to platform_String
+	formsContainerNumber->Text += "#" + personNumber->Text + "\r\n";
+	indexCounter->Text += (counter.ToString() + "\r\n");
+
 	personName->Text = "";
-	personNumber->Text = "";
+	personNumber->Text = ""; 
+	counter += 1;
 }
 
 void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	std::wstring srchName = ((findPerson->Text)->Data());
+	std::wstring srchName = (findPerson->Text)->Data();
 	std::transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
+
 
 	double returnNum = childTestObj->findValInTable(srchName);
 	if (returnNum == -1) {
@@ -97,11 +105,41 @@ void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::
 	else {
 		numberResult->Text = returnNum.ToString();
 	}
+	
 }
+
+// works for changing foreground color:
+// formsContainerName->Foreground = ref new SolidColorBrush(Windows::UI::Colors::Green);
 
 
 // clears hash table in childClassTest
 void cppApp::MainPage::ClearTable_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	childTestObj->clrTable();
+}
+
+// clears top vector searh for numbers
+void cppApp::MainPage::ClearVec_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	testClassObj->clearVec();
+	outputVecSize->Text = "";
+}
+
+
+void cppApp::MainPage::FillVec_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	testClassObj->fillVec();
+}
+
+// clears both the forms and person lookup vectors
+void cppApp::MainPage::ClrForms_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+
+	childTestObj->clrFormsVect();
+	childTestObj->clrTable();
+	counter = 0;
+
+	formsContainerName->Text = "";
+	formsContainerNumber->Text = "";
+	indexCounter->Text = "";
 }

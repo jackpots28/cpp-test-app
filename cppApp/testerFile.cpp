@@ -16,6 +16,8 @@ size_t testSize = 5'000'000;
 unique_ptr<childClassTest> obj1(new childClassTest());
 
 testerFile::testerFile() {
+	itrCount = 1000;
+
 	tmpVec.resize(testSize);
 	for (auto& d : tmpVec) {
 		d = (rand() % 1000);
@@ -48,5 +50,27 @@ void testerFile::refVecSrchAndCount(double& returnPos, double& counterRef){
 	}
 	else
 		returnPos = pos;
+}
+
+void testerFile::clearVec() {
+	tmpVec.clear();
+}
+
+int testerFile::getVecSize() {
+	return tmpVec.size();
+}
+
+void testerFile::fillVec() {
+	itrCount = itrCount + 1000;
+	if (tmpVec.empty() == true) {
+		tmpVec.resize(testSize);
+		for (auto& d : tmpVec) {
+			d = (rand() % ((1000 + (rand() % 1000)) /4));
+		}
+	}
+	else {
+		tmpVec = tmpVec;
+	}
+	
 }
 

@@ -34,7 +34,10 @@ namespace cppApp
     private:
         bool _contentLoaded;
     
-        private: ::Windows::UI::Xaml::Controls::Button^ clearTable;
+        private: ::Windows::UI::Xaml::Controls::Button^ clearPersonTable;
+        private: ::Windows::UI::Xaml::Controls::Button^ clearVec;
+        private: ::Windows::UI::Xaml::Controls::Button^ fillVec;
+        private: ::Windows::UI::Xaml::Controls::Button^ clrForms;
         private: ::Windows::UI::Xaml::Controls::Button^ calculate;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ outputBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;
@@ -44,6 +47,8 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::TextBlock^ frstIndexTitleBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ quantTitleBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ compartTitleNumber;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ vecSize;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ outputVecSize;
         private: ::Windows::UI::Xaml::Controls::Button^ addContact;
         private: ::Windows::UI::Xaml::Controls::Button^ srchContact;
         private: ::Windows::UI::Xaml::Controls::TextBox^ personName;
@@ -53,6 +58,11 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::TextBlock^ titlePersonNumber;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ compartTitle;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ numberResult;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ textBlock;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ formsTextBlk;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ formsContainerName;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ formsContainerNumber;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ indexCounter;
     };
 }
 

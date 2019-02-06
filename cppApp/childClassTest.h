@@ -5,6 +5,7 @@
 #include <string>
 #include <optional>
 
+
 class childClassTest : public testerFile
 {
 public:
@@ -17,9 +18,14 @@ public:
 	void optSearch(std::optional<std::wstring>& optKey, std::optional<double>& optVal);
 	void clrTable();
 
+	std::wstring getVecString(int index);
+	void clrFormsVect();
+	 
 private:
 	std::wstring formattedText;
 	std::string classConstruct;
+
+	std::vector<std::wstring> tmpTestVec;
 
 	std::unordered_map<std::wstring, double> hashTable;
 	std::unordered_map<std::wstring, double>::const_iterator itr;

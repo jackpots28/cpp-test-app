@@ -37,16 +37,23 @@ std::wstring childClassTest::findValInTable(double srchKey) {
 	}
 }
 
-void childClassTest::addToWString(std::wstring tmp) {
-	formsHoldingString += tmp;
+void childClassTest::setOutsideToChildVec(std::vector<std::wstring>& outside) {
+	outside = tmpTestVec;
 }
 
-/************************************************************************************/
-/************************************************************************************/
+
+void childClassTest::editWStringVec(int index, std::wstring newText) {
+	tmpTestVec.at(index) = (newText + L"\r\n"); 
+}
 
 std::wstring childClassTest::getVecString(int index) {
-	return tmpTestVec.at(index);
+	return std::wstring(tmpTestVec.at(index));
 }
+
+int childClassTest::returnWStringVecSize() {
+	return tmpTestVec.size();
+}
+
 
 void childClassTest::clrFormsVect() {
 	tmpTestVec.clear();

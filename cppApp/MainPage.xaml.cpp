@@ -24,7 +24,6 @@
 #include <string>
 #include <sstream>
 #include <cwctype>
-#include <conio.h>
 
 using std::unique_ptr;
 using std::shared_ptr;
@@ -41,7 +40,6 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
-
 MainPage::MainPage()
 {
 	InitializeComponent();
@@ -51,6 +49,9 @@ shared_ptr<testerFile> testClassObj(new testerFile());
 shared_ptr<childClassTest> childTestObj(new childClassTest());
 
 int counter = 0; // counter for word storage in AddContact_Click vector
+
+std::vector<std::wstring>outsideVec; // vector to hold names to edit
+
 
 // Think about coming back in and adding documentation 
 // to what exactly this button click event does
@@ -101,9 +102,9 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 
 	double number = _wtof((personNumber->Text)->Data()); // platform_String converted to double
 	childTestObj->insertIntoHT(name, number);
-	
-	formsContainerName->Text += ref new String((childTestObj->getVecString(counter).append(L"\r\n")).c_str()); // wide_string converted to platform_String
-	childTestObj->addToWString(childTestObj->getVecString(counter).append(L"\r\n"));
+	outsideVec.push_back(name.append(L"\r\n"));
+
+	formsContainerName->Text += ref new String((outsideVec.at(counter)).c_str()); // wide_string converted to platform_String
 
 	formsContainerNumber->Text += "#" + personNumber->Text + "\r\n";
 	indexCounter->Text += (counter.ToString() + "\r\n");
@@ -189,16 +190,22 @@ void cppApp::MainPage::EditForm_Click(Platform::Object^ sender, Windows::UI::Xam
 	//**************************************************************//
 
 	// tmp wide string to hold contents of the formsContainerName platform string
-	std::wstring fndStr = ((formsContainerName->Text)->Data());
+	// childTestObj->setOutsideToChildVec(outsideVec);
+	std::wstring fndStr; //= ((formsContainerName->Text)->Data());
 	
-	// this works statically if the first word in the String^ is five characters long
-	// at the end of every word "\r\n" is appended for the newline
-	// come up with a way to edit the string without overwriting the newline characters
+	/*for (int i = 0; i < childTestObj->getVecSize(); i++) {
+		fndStr += childTestObj->getVecString(i);
+	}*/
 
-	fndStr.at(7) = L'H';
-	fndStr.at(8) = L'o';
-	fndStr.at(9) = L'p';
-	fndStr.at(10) = L'e';
+	// outsideVec.at(2) = L"hello";
+	std::wstring newText = (personName->Text)->Data();
+	int index = _wtoi((findPerson->Text)->Data());
+	outsideVec.at(index) = (newText + L"\r\n");
+
+	for (int i = 0; i < outsideVec.size(); i++) {
+		fndStr += (outsideVec.at(i));
+	}
+
 
 	// rewrite the formsContainerName->Text with the updated tmp wide string
 	formsContainerName->Text = ref new String(fndStr.c_str());

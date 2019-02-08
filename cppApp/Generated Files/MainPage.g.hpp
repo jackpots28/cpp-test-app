@@ -183,24 +183,44 @@ void ::cppApp::MainPage::Connect(int __connectionId, ::Platform::Object^ __targe
             break;
         case 29:
             {
-                this->formsContainerName = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+                this->formsEditNameDis = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
             }
             break;
         case 30:
             {
-                this->formsContainerNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+                this->formsEditIndexDis = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
             }
             break;
         case 31:
             {
-                this->indexCounter = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+                this->formsContainerName = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
             }
             break;
         case 32:
             {
+                this->formsContainerNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 33:
+            {
+                this->indexCounter = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+            }
+            break;
+        case 34:
+            {
                 this->editForm = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
                 (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->editForm))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
                     (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::EditForm_Click);
+            }
+            break;
+        case 35:
+            {
+                this->editName = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+            }
+            break;
+        case 36:
+            {
+                this->indexToEdit = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             }
             break;
     }

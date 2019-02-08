@@ -62,10 +62,14 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::TextBlock^ nameFormsBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ numberFormsBox;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ formsTextBlk;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ formsEditNameDis;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ formsEditIndexDis;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ formsContainerName;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ formsContainerNumber;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ indexCounter;
         private: ::Windows::UI::Xaml::Controls::Button^ editForm;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ editName;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ indexToEdit;
     };
 }
 

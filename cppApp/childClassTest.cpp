@@ -21,12 +21,12 @@ childClassTest::~childClassTest() {
 	OutputDebugString(formattedText.c_str());
 }
 
-void childClassTest::insertIntoHT(std::wstring val, double key) {
+void childClassTest::insertIntoHT(std::wstring val, int key) {
 	hashTable.insert(std::make_pair(key, val));
 	tmpTestVec.push_back(val);
 }
 
-std::wstring childClassTest::findValInTable(double srchKey) {
+std::wstring childClassTest::findValInTable(int srchKey) {
 	itr = hashTable.find(srchKey);
 	if (itr != hashTable.end()) {
 		return itr->second;
@@ -35,6 +35,10 @@ std::wstring childClassTest::findValInTable(double srchKey) {
 	{
 		return L"Nil";
 	}
+}
+
+void childClassTest::editHashTable(int index, std::vector<std::wstring> outside) {
+	hashTable[index] = outside.at(index);
 }
 
 void childClassTest::setOutsideToChildVec(std::vector<std::wstring>& outside) {

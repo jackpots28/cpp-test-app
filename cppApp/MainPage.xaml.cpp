@@ -1,17 +1,4 @@
-﻿//
-//
-//
-//**************************************************************//
-//		Left off on 2-6-2019 ... was working on being able		//
-//		to update the "formsContainerName" platform string		//
-//		need to remove the excess storage strings in the 		//
-//		childClassTest, eg. the methods for storage as well		//
-//**************************************************************//
-//
-//
-//
-
-
+﻿
 #include "pch.h"
 #include "testerFile.h"
 #include "childClassTest.h"
@@ -40,18 +27,16 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
-MainPage::MainPage()
-{
-	InitializeComponent();
-}
-
 shared_ptr<testerFile> testClassObj(new testerFile());
 shared_ptr<childClassTest> childTestObj(new childClassTest());
 
 int counter = 0; // counter for word storage in AddContact_Click vector
-
 std::vector<std::wstring>outsideVec; // vector to hold names to edit
 
+MainPage::MainPage()
+{
+	InitializeComponent();
+}
 
 // Think about coming back in and adding documentation 
 // to what exactly this button click event does
@@ -101,7 +86,7 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 	std::transform(name.begin(), name.end(), name.begin(), tolower);
 
 	double number = _wtof((personNumber->Text)->Data()); // platform_String converted to double
-	childTestObj->insertIntoHT(name, number);
+	childTestObj->insertIntoHT(name, counter);
 	outsideVec.push_back(name.append(L"\r\n"));
 
 	formsContainerName->Text += ref new String((outsideVec.at(counter)).c_str()); // wide_string converted to platform_String
@@ -112,23 +97,22 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 	personName->Text = "";
 	personNumber->Text = ""; 
 	counter += 1;
+	editForm->IsEnabled = true;
 }
 
 
 // search hashtable via double "key"
 void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	double srchName = _wtof((findPerson->Text)->Data());
+	int srchName = _wtoi((findPerson->Text)->Data());
 	// std::transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
 
 	auto returnNum = childTestObj->findValInTable(srchName);
 	if (returnNum == L"Nil") {
 		numberResult->Text = "Not found.";
-		editForm->IsEnabled = false;
 	}
 	else {
 		numberResult->Text = ref new String(returnNum.c_str());
-		editForm->IsEnabled = true;
 		editForm->Background = ref new SolidColorBrush(Windows::UI::ColorHelper::FromArgb(255, 66, 158, 60));
 	}
 	
@@ -145,6 +129,8 @@ void cppApp::MainPage::ClearTable_Click(Platform::Object^ sender, Windows::UI::X
 
 	findPerson->Text = "";
 	numberResult->Text = "";
+
+	editForm->IsEnabled = false;
 }
 
 // clears top vector searh for numbers
@@ -167,6 +153,7 @@ void cppApp::MainPage::ClrForms_Click(Platform::Object^ sender, Windows::UI::Xam
 	childTestObj->clrFormsVect();
 	childTestObj->clrTable();
 	counter = 0;
+	outsideVec.clear();
 
 	formsContainerName->Text = "";
 	formsContainerNumber->Text = "";
@@ -181,32 +168,59 @@ void cppApp::MainPage::ClrForms_Click(Platform::Object^ sender, Windows::UI::Xam
 
 void cppApp::MainPage::EditForm_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
+	if (!outsideVec.empty()) {
 
-	//**************************************************************//
-	//		This is how I can update the "Forms" Name section		//
-	//		saving a copy of the platform string in a wstring		//
-	//		then editing what I want in the wstring and writing		//
-	//		back to the "formsContainerName" platform string		//
-	//**************************************************************//
+		//**************************************************************//
+		//		This is how I can update the "Forms" Name section		//
+		//		saving a copy of the platform string in a wstring		//
+		//		then editing what I want in the wstring and writing		//
+		//		back to the "formsContainerName" platform string		//
+		//**************************************************************//
 
-	// tmp wide string to hold contents of the formsContainerName platform string
-	// childTestObj->setOutsideToChildVec(outsideVec);
-	std::wstring fndStr; //= ((formsContainerName->Text)->Data());
-	
-	/*for (int i = 0; i < childTestObj->getVecSize(); i++) {
-		fndStr += childTestObj->getVecString(i);
-	}*/
+		// tmp wide string to hold contents of the formsContainerName platform string
+		// childTestObj->setOutsideToChildVec(outsideVec);
+		std::wstring fndStr; //= ((formsContainerName->Text)->Data());
 
-	// outsideVec.at(2) = L"hello";
-	std::wstring newText = (personName->Text)->Data();
-	int index = _wtoi((findPerson->Text)->Data());
-	outsideVec.at(index) = (newText + L"\r\n");
+		/*for (int i = 0; i < childTestObj->getVecSize(); i++) {
+			fndStr += childTestObj->getVecString(i);
+		}*/
 
-	for (int i = 0; i < outsideVec.size(); i++) {
-		fndStr += (outsideVec.at(i));
+
+		// outsideVec.at(2) = L"hello";
+		std::wstring newText = (editName->Text)->Data();
+		int index = _wtoi((indexToEdit->Text)->Data());
+		int sizeOfVec = outsideVec.size();
+
+		// test for index within range for outSideVec
+		if (index < sizeOfVec && index > -1) {
+			outsideVec.at(index) = (newText.append(L"\r\n"));
+
+			for (int i = 0; i < outsideVec.size(); i++) {
+				fndStr += (outsideVec.at(i));
+				childTestObj->editHashTable(i, outsideVec);
+			}
+
+			editName->Text = "";
+			indexToEdit->Text = "";
+
+			// rewrite the formsContainerName->Text with the updated tmp wide string
+			formsContainerName->Text = ref new String(fndStr.c_str());
+			
+			/// Debugging test
+			char s[256];
+			sprintf_s(s, "--Index is within range--\nSize of vec: %d\n", sizeOfVec);
+			OutputDebugStringA(s);
+		}
+		else if(index > sizeOfVec - 1 || index < 0) {
+			editName->Text = "";
+			indexToEdit->Text = "";
+
+			/// Debugging test
+			OutputDebugString(L"--Index is out of range--\n");
+		}
 	}
 
-
-	// rewrite the formsContainerName->Text with the updated tmp wide string
-	formsContainerName->Text = ref new String(fndStr.c_str());
+	else {
+		return;
+	}
 }

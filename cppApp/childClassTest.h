@@ -12,8 +12,8 @@ public:
 	childClassTest();
 	~childClassTest();
 
-	void insertIntoHT(std::wstring key, double val);
-	std::wstring findValInTable(double key);
+	void insertIntoHT(std::wstring key, int val);
+	std::wstring findValInTable(int key);
 
 	void clrTable();
 
@@ -23,6 +23,7 @@ public:
 	int returnWStringVecSize();
 	
 	void setOutsideToChildVec(std::vector<std::wstring>& outside);
+	void editHashTable(int index, std::vector<std::wstring> outside);
 
 private:
 	std::wstring formattedText;
@@ -30,7 +31,7 @@ private:
 
 	std::vector<std::wstring> tmpTestVec;
 
-	std::unordered_map<double, std::wstring> hashTable;
-	std::unordered_map<double, std::wstring>::const_iterator itr;
+	std::unordered_map<int, std::wstring> hashTable;
+	std::unordered_map<int, std::wstring>::const_iterator itr;
 };
 

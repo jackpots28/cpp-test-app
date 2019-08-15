@@ -2,6 +2,7 @@
 
 #include "MainPage.g.h"
 
+
 namespace cppApp
 {
 	/// <summary>
@@ -22,5 +23,10 @@ namespace cppApp
 		void FillVec_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void ClrForms_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void EditForm_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void AppBar_Opened(Platform::Object^ sender, Platform::Object^ e);
+		void SaveData_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void IndexToEdit_TextChanged(Platform::Object^ sender, Windows::UI::Xaml::Controls::TextChangedEventArgs^ e);
+
 	};
+	
 }

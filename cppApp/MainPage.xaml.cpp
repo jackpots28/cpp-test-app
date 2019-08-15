@@ -3,14 +3,14 @@
 #include "testerFile.h"
 #include "childClassTest.h"
 #include "MainPage.xaml.h"
-#include <stdlib.h>
-#include <cstdlib>
-#include <iostream>
-#include <memory>
-#include <random>
-#include <string>
-#include <sstream>
-#include <cwctype>
+
+
+// Lasted edited AUG 18TH
+//------------------------
+// check line 246 for comments
+// also changed preprocessor definitions under----v
+//                                       "cppApp Properties"
+//----------------------------------------------------------
 
 using std::unique_ptr;
 using std::shared_ptr;
@@ -27,8 +27,14 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
+std::string fileNameCPP = "cppText";
+
 shared_ptr<testerFile> testClassObj(new testerFile());
 shared_ptr<childClassTest> childTestObj(new childClassTest());
+
+
+std::string msg = "THIS IS A TEST.";
+unique_ptr<testerFile> streamTest(new testerFile(fileNameCPP));
 
 int counter = 0; // counter for word storage in AddContact_Click vector
 std::vector<std::wstring>outsideVec; // vector to hold names to edit
@@ -36,6 +42,8 @@ std::vector<std::wstring>outsideVec; // vector to hold names to edit
 MainPage::MainPage()
 {
 	InitializeComponent();
+	indexToEdit->IsEnabled = false;
+	editName->IsEnabled = false;
 }
 
 // Think about coming back in and adding documentation 
@@ -98,6 +106,8 @@ void cppApp::MainPage::AddContact_Click(Platform::Object^ sender, Windows::UI::X
 	personNumber->Text = ""; 
 	counter += 1;
 	editForm->IsEnabled = true;
+	indexToEdit->IsEnabled = true;
+	editName->IsEnabled = true;
 }
 
 
@@ -107,13 +117,15 @@ void cppApp::MainPage::SrchContact_Click(Platform::Object^ sender, Windows::UI::
 	int srchName = _wtoi((findPerson->Text)->Data());
 	// std::transform(srchName.begin(), srchName.end(), srchName.begin(), tolower);
 
-	auto returnNum = childTestObj->findValInTable(srchName);
-	if (returnNum == L"Nil") {
+	auto returnString = childTestObj->findValInTable(srchName);
+
+	// escape word for if unordered map returns a wide string of "Nil"
+	if (returnString == L"Nil") {
 		numberResult->Text = "Not found.";
 	}
 	else {
-		numberResult->Text = ref new String(returnNum.c_str());
-		editForm->Background = ref new SolidColorBrush(Windows::UI::ColorHelper::FromArgb(255, 66, 158, 60));
+		numberResult->Text = ref new String(returnString.c_str());
+		// editForm->Background = ref new SolidColorBrush(Windows::UI::ColorHelper::FromArgb(255, 20, 158, 60));
 	}
 	
 }
@@ -131,6 +143,8 @@ void cppApp::MainPage::ClearTable_Click(Platform::Object^ sender, Windows::UI::X
 	numberResult->Text = "";
 
 	editForm->IsEnabled = false;
+	indexToEdit->IsEnabled = false;
+	editName->IsEnabled = false;
 }
 
 // clears top vector searh for numbers
@@ -163,6 +177,8 @@ void cppApp::MainPage::ClrForms_Click(Platform::Object^ sender, Windows::UI::Xam
 	numberResult->Text = "";
 
 	editForm->IsEnabled = false;
+	indexToEdit->IsEnabled = false;
+	editName->IsEnabled = false;
 }
 
 
@@ -207,9 +223,8 @@ void cppApp::MainPage::EditForm_Click(Platform::Object^ sender, Windows::UI::Xam
 			formsContainerName->Text = ref new String(fndStr.c_str());
 			
 			/// Debugging test
-			char s[256];
-			sprintf_s(s, "--Index is within range--\nSize of vec: %d\n", sizeOfVec);
-			OutputDebugStringA(s);
+			std::wstring indexOP = L"--Name value changed--\nSize of vec: " + std::to_wstring(sizeOfVec);
+			OutputDebugString(indexOP.c_str());
 		}
 		else if(index > sizeOfVec - 1 || index < 0) {
 			editName->Text = "";
@@ -223,4 +238,70 @@ void cppApp::MainPage::EditForm_Click(Platform::Object^ sender, Windows::UI::Xam
 	else {
 		return;
 	}
+}
+
+
+void cppApp::MainPage::AppBar_Opened(Platform::Object^ sender, Platform::Object^ e)
+{
+
+}
+
+
+// Used to save variable states and/or off load hash tables and vectors to files
+void cppApp::MainPage::SaveData_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+
+	////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+	////															    ////
+	////  This is where I left off, AUG 18TH. Unsure of what to do to   ////
+	////  fix any of the issues with opening files via button click or  ////
+	////  using outside class construction to open files                ////
+	////															    ////
+	////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
+
+	//----v
+	//   edited "testerFile.cpp" and---v
+	//                               "testerFile.h"
+
+
+	streamTest->writeToFile(msg);
+
+	char buff[100];
+	std::fstream of;
+
+	of.open("isThisCreated.txt");
+	if (of.is_open()) {
+		while (!of.eof()) {
+			of >> buff;
+
+			std::string s(buff);
+			std::wstring out(s.begin(), s.end());
+			quantTitleBox->Text = ref new String(out.c_str());
+			OutputDebugString(out.c_str());
+		}
+	}
+	else if (!of.is_open()) {
+		quantTitleBox->Text = "File not opened";
+	}
+	//of.close();
+
+	static int i = 1;
+	// saveData->Background = ref new SolidColorBrush(Windows::UI::Colors::Blue);
+	if (i % 2 == 0) {
+		saveData->Background = ref new SolidColorBrush(Windows::UI::Colors::White);
+		// i++;
+	}
+	else if (i % 2 != 0) {
+		saveData->Background = ref new SolidColorBrush(Windows::UI::Colors::LightSlateGray);
+		// i++;
+	}
+	i++;
+}
+
+
+void cppApp::MainPage::IndexToEdit_TextChanged(Platform::Object^ sender, Windows::UI::Xaml::Controls::TextChangedEventArgs^ e)
+{
+
 }

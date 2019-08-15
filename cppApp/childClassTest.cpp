@@ -1,9 +1,6 @@
 
 #include "pch.h"
 #include "childClassTest.h"
-#include <algorithm>
-#include <string>
-#include <unordered_map>
 
 // Document?
 

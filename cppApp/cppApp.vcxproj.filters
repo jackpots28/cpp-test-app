@@ -18,7 +18,6 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="testerFile.cpp" />
     <ClCompile Include="childClassTest.cpp" />
-    <ClCompile Include="wordFreqUMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -26,7 +25,6 @@
     <ClInclude Include="MainPage.xaml.h" />
     <ClInclude Include="testerFile.h" />
     <ClInclude Include="childClassTest.h" />
-    <ClInclude Include="wordFreqUMap.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">
@@ -59,5 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="saveTest.txt">
+      <Filter>Assets</Filter>
+    </Text>
+    <Text Include="text.txt">
+      <Filter>Assets</Filter>
+    </Text>
+    <Text Include="cppText.txt" />
   </ItemGroup>
 </Project>

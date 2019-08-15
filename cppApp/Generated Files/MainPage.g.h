@@ -32,12 +32,19 @@ namespace cppApp
         virtual ::Windows::UI::Xaml::Markup::IComponentConnector^ GetBindingConnector(int connectionId, ::Platform::Object^ target);
     
     private:
+        void UnloadObject(::Windows::UI::Xaml::DependencyObject^ dependencyObject);
+        void DisconnectUnloadedObject(int connectionId);
+    
+    private:
         bool _contentLoaded;
+    
+        class MainPage_obj1_Bindings;
     
         private: ::Windows::UI::Xaml::Controls::Button^ clearPersonTable;
         private: ::Windows::UI::Xaml::Controls::Button^ clearVec;
         private: ::Windows::UI::Xaml::Controls::Button^ fillVec;
         private: ::Windows::UI::Xaml::Controls::Button^ clrForms;
+        private: ::Windows::UI::Xaml::Controls::Button^ saveData;
         private: ::Windows::UI::Xaml::Controls::Button^ calculate;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ outputBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;
@@ -51,8 +58,8 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::Button^ addContact;
         private: ::Windows::UI::Xaml::Controls::Button^ srchContact;
         private: ::Windows::UI::Xaml::Controls::TextBox^ personName;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ findPerson;
         private: ::Windows::UI::Xaml::Controls::TextBox^ personNumber;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ findPerson;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ numberResult;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ titlePersonName;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ titlePersonNumber;
@@ -68,8 +75,8 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::TextBlock^ formsContainerNumber;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ indexCounter;
         private: ::Windows::UI::Xaml::Controls::Button^ editForm;
-        private: ::Windows::UI::Xaml::Controls::TextBox^ editName;
         private: ::Windows::UI::Xaml::Controls::TextBox^ indexToEdit;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ editName;
     };
 }
 

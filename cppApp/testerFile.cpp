@@ -1,12 +1,7 @@
 #include "pch.h"
 #include "testerFile.h"
 #include "childClassTest.h"
-#include <algorithm>
-#include <execution>
-#include <vector>
-#include <memory>
-#include <iostream>
-#include <string>
+
 
 using std::execution::par_unseq;
 using std::unique_ptr;
@@ -29,8 +24,22 @@ testerFile::testerFile() {
 	OutputDebugString(formattedText.c_str());
 }
 
+testerFile::testerFile(std::string& fileName) {
+	fp = fopen(fileName.c_str(), "a");
+}
+
+void testerFile::writeToFile(std::string& msgToWrite) {
+	if (!fp) {
+		OutputDebugString(L"FILE WAS NOT OPENED\n");
+	}
+	else if (fp) {
+		fputs(msgToWrite.c_str(), fp);
+	}
+}
+
 testerFile::~testerFile() {
 	tmpVec.clear();
+	fclose(fp);
 
 	classConstruct = "--testerFile obj Destroyed--\n";
 	formattedText.resize((classConstruct.length(), ' '));

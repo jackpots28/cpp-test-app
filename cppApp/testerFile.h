@@ -7,6 +7,9 @@ public:
 	testerFile();
 	~testerFile();
 
+	testerFile(std::string& fileName);
+	void writeToFile(std::string& msgToWrite);
+
 	void refVecSrchAndCount(double& returnPos, double& counterRef);
 
 	void clearVec();
@@ -18,6 +21,8 @@ public:
 private:
 	std::wstring formattedText;
 	std::string classConstruct;
+
+	FILE* fp;
 
 	ptrdiff_t pos;
 

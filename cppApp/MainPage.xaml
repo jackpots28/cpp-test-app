@@ -56,7 +56,7 @@
             <Canvas HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="426" Background="#FFF27980">
                 <!-- textBlocks, Buttons, textBoxes -->
                 <Button x:Name="addContact" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="78" Click="AddContact_Click"/>
-                <Button x:Name="srchContact" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="151" Click="SrchContact_Click"/>
+                <Button x:Name="srchContact" Content="Find" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="151" Click="SrchContact_Click" FontFamily="Segoe UI"/>
                 <TextBox x:Name="personName" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" Canvas.Left="114" Canvas.Top="78"/>
                 <TextBox x:Name="personNumber" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Canvas.Left="255" Canvas.Top="78"/>
                 <TextBox x:Name="findPerson" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" Canvas.Left="114" Canvas.Top="151"/>
@@ -98,5 +98,29 @@
                 </TextBlock>
             </Canvas>
         </Border>
+        
+        <!-- Test DB button (temp)-->
+        <Border>
+            <Canvas>
+                <Button x:Name="dbTest" Content="To test DB" Height="30" Width="300" Margin="200,600,0,0" VerticalAlignment="Top" Background="White" Click="DbTest_Click">
+                    <!-- style change for the button hover color -->
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <ResourceDictionary.ThemeDictionaries>
+                                <ResourceDictionary x:Key="Dark">
+                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Red"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                </ResourceDictionary>
+                                <ResourceDictionary x:Key="Light">
+                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Red"/>
+                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                                </ResourceDictionary>
+                            </ResourceDictionary.ThemeDictionaries>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                </Button>
+            </Canvas>
+        </Border>
+        
     </Grid>
 </Page>

@@ -45,6 +45,7 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::Button^ fillVec;
         private: ::Windows::UI::Xaml::Controls::Button^ clrForms;
         private: ::Windows::UI::Xaml::Controls::Button^ saveData;
+        private: ::Windows::UI::Xaml::Controls::Button^ dbTest;
         private: ::Windows::UI::Xaml::Controls::Button^ calculate;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ outputBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;

@@ -27,6 +27,7 @@
 #include <execution>
 #include <memory>
 
-
+#include <sqlite3.h>
+#include <winrt/Windows.Storage.h>
 
 

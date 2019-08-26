@@ -27,6 +27,7 @@ namespace cppApp
 		void SaveData_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void IndexToEdit_TextChanged(Platform::Object^ sender, Windows::UI::Xaml::Controls::TextChangedEventArgs^ e);
 
+		void DbTest_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 	
 }

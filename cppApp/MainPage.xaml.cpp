@@ -3,6 +3,8 @@
 #include "testerFile.h"
 #include "childClassTest.h"
 #include "MainPage.xaml.h"
+#include "openDB.h"
+
 
 
 // Lasted edited AUG 18TH
@@ -27,17 +29,18 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
+
 std::string fileNameCPP = "cppText";
 
 shared_ptr<testerFile> testClassObj(new testerFile());
 shared_ptr<childClassTest> childTestObj(new childClassTest());
 
-
-std::string msg = "THIS IS A TEST.";
-unique_ptr<testerFile> streamTest(new testerFile(fileNameCPP));
+unique_ptr<openDB> dbObj(new openDB());
 
 int counter = 0; // counter for word storage in AddContact_Click vector
 std::vector<std::wstring>outsideVec; // vector to hold names to edit
+
+
 
 MainPage::MainPage()
 {
@@ -45,6 +48,7 @@ MainPage::MainPage()
 	indexToEdit->IsEnabled = false;
 	editName->IsEnabled = false;
 }
+
 
 // Think about coming back in and adding documentation 
 // to what exactly this button click event does
@@ -265,28 +269,6 @@ void cppApp::MainPage::SaveData_Click(Platform::Object^ sender, Windows::UI::Xam
 	//   edited "testerFile.cpp" and---v
 	//                               "testerFile.h"
 
-
-	streamTest->writeToFile(msg);
-
-	char buff[100];
-	std::fstream of;
-
-	of.open("isThisCreated.txt");
-	if (of.is_open()) {
-		while (!of.eof()) {
-			of >> buff;
-
-			std::string s(buff);
-			std::wstring out(s.begin(), s.end());
-			quantTitleBox->Text = ref new String(out.c_str());
-			OutputDebugString(out.c_str());
-		}
-	}
-	else if (!of.is_open()) {
-		quantTitleBox->Text = "File not opened";
-	}
-	//of.close();
-
 	static int i = 1;
 	// saveData->Background = ref new SolidColorBrush(Windows::UI::Colors::Blue);
 	if (i % 2 == 0) {
@@ -304,4 +286,32 @@ void cppApp::MainPage::SaveData_Click(Platform::Object^ sender, Windows::UI::Xam
 void cppApp::MainPage::IndexToEdit_TextChanged(Platform::Object^ sender, Windows::UI::Xaml::Controls::TextChangedEventArgs^ e)
 {
 
+}
+
+
+void cppApp::MainPage::DbTest_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{	
+	//-- August 26, 2019... the below lines worked!!!
+	Platform::String^ localfolder = Windows::Storage::ApplicationData::Current->LocalFolder->Path;
+	std::wstring folderNameW(localfolder->Begin());
+	std::string folderNameA(folderNameW.begin(), folderNameW.end());
+	const char* charStr = folderNameA.c_str();
+	char fileName[512];
+	sprintf(fileName, "%s\\testDatabase.db", charStr);
+
+	/*
+	//-- for adding text to tmp.txt
+	std::ofstream out(fileName, std::ios::out);
+	if (out) {
+		dbTest->Content = L"Text was writen to file.";
+		out << "Is this test working?\n";
+		out.close();
+	}
+	*/
+	
+	//-- method call to open testDatabase.db -- working
+	std::string ssString = dbObj->returnExit(fileName);
+	std::wstring outPutStr(ssString.begin(), ssString.end());
+	dbTest->Content = ref new String(outPutStr.c_str());
+	
 }

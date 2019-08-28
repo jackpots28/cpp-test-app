@@ -19,6 +19,7 @@
     <ClCompile Include="testerFile.cpp" />
     <ClCompile Include="childClassTest.cpp" />
     <ClCompile Include="openDB.cpp" />
+    <ClCompile Include="queryMakerDB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -27,6 +28,8 @@
     <ClInclude Include="testerFile.h" />
     <ClInclude Include="childClassTest.h" />
     <ClInclude Include="openDB.h" />
+    <ClInclude Include="queryMakerDB.h" />
+    <ClInclude Include="callBack.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">

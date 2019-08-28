@@ -3,16 +3,7 @@
 #include "testerFile.h"
 #include "childClassTest.h"
 #include "MainPage.xaml.h"
-#include "openDB.h"
 
-
-
-// Lasted edited AUG 18TH
-//------------------------
-// check line 246 for comments
-// also changed preprocessor definitions under----v
-//                                       "cppApp Properties"
-//----------------------------------------------------------
 
 using std::unique_ptr;
 using std::shared_ptr;
@@ -30,17 +21,16 @@ using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
 
-std::string fileNameCPP = "cppText";
-
 shared_ptr<testerFile> testClassObj(new testerFile());
 shared_ptr<childClassTest> childTestObj(new childClassTest());
 
+//-- object for database queries. Needs snippets from other project to implement 
+//-- the rest of the quries
 unique_ptr<openDB> dbObj(new openDB());
+unique_ptr<queryMakerDB> queryObj(new queryMakerDB());
 
 int counter = 0; // counter for word storage in AddContact_Click vector
 std::vector<std::wstring>outsideVec; // vector to hold names to edit
-
-
 
 MainPage::MainPage()
 {
@@ -190,13 +180,6 @@ void cppApp::MainPage::EditForm_Click(Platform::Object^ sender, Windows::UI::Xam
 {
 	if (!outsideVec.empty()) {
 
-		//**************************************************************//
-		//		This is how I can update the "Forms" Name section		//
-		//		saving a copy of the platform string in a wstring		//
-		//		then editing what I want in the wstring and writing		//
-		//		back to the "formsContainerName" platform string		//
-		//**************************************************************//
-
 		// tmp wide string to hold contents of the formsContainerName platform string
 		// childTestObj->setOutsideToChildVec(outsideVec);
 		std::wstring fndStr; //= ((formsContainerName->Text)->Data());
@@ -251,35 +234,15 @@ void cppApp::MainPage::AppBar_Opened(Platform::Object^ sender, Platform::Object^
 }
 
 
-// Used to save variable states and/or off load hash tables and vectors to files
+//-- button click to save id and age to database -- WORKING
 void cppApp::MainPage::SaveData_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
+	int index = _wtoi((dbIndexInput->Text)->Data());
+	int age = _wtoi((dbAgeInput->Text)->Data());
+	dbObj->takeInQuery(queryObj->txtBoxCreateInsrt(index, age));
 
-	////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////
-	////															    ////
-	////  This is where I left off, AUG 18TH. Unsure of what to do to   ////
-	////  fix any of the issues with opening files via button click or  ////
-	////  using outside class construction to open files                ////
-	////															    ////
-	////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////
-
-	//----v
-	//   edited "testerFile.cpp" and---v
-	//                               "testerFile.h"
-
-	static int i = 1;
-	// saveData->Background = ref new SolidColorBrush(Windows::UI::Colors::Blue);
-	if (i % 2 == 0) {
-		saveData->Background = ref new SolidColorBrush(Windows::UI::Colors::White);
-		// i++;
-	}
-	else if (i % 2 != 0) {
-		saveData->Background = ref new SolidColorBrush(Windows::UI::Colors::LightSlateGray);
-		// i++;
-	}
-	i++;
+	dbIndexInput->Text = "";
+	dbAgeInput->Text = "";
 }
 
 
@@ -289,6 +252,8 @@ void cppApp::MainPage::IndexToEdit_TextChanged(Platform::Object^ sender, Windows
 }
 
 
+//-- button click event to open or close database file -- WORKING
+int dbCounter = 0;
 void cppApp::MainPage::DbTest_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {	
 	//-- August 26, 2019... the below lines worked!!!
@@ -309,9 +274,23 @@ void cppApp::MainPage::DbTest_Click(Platform::Object^ sender, Windows::UI::Xaml:
 	}
 	*/
 	
-	//-- method call to open testDatabase.db -- working
-	std::string ssString = dbObj->returnExit(fileName);
-	std::wstring outPutStr(ssString.begin(), ssString.end());
-	dbTest->Content = ref new String(outPutStr.c_str());
-	
+	if (dbCounter % 2 == 0) {
+		//-- method call to open testDatabase.db -- WORKING
+		dbTest->Content = L"DB Opened";
+		std::string ssString = dbObj->returnExit(fileName);
+		std::wstring outPutStr(ssString.begin(), ssString.end());
+	}
+	else {
+		dbTest->Content = L"DB Closed";
+		dbObj->closeDB();
+	}
+	dbCounter++;
+}
+
+//-- button to call delete query method -- WORKING
+void cppApp::MainPage::DeleteIndex_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	int index = _wtoi(dbIndexInput->Text->Data());
+	dbObj->takeInQuery(queryObj->deleteQuery(index));
+	dbIndexInput->Text = "";
 }

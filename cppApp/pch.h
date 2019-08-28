@@ -30,4 +30,8 @@
 #include <sqlite3.h>
 #include <winrt/Windows.Storage.h>
 
+#include "callBack.h"
+#include "openDB.h"
+#include "queryMakerDB.h"
+
 

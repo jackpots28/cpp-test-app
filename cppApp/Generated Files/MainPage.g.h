@@ -46,6 +46,11 @@ namespace cppApp
         private: ::Windows::UI::Xaml::Controls::Button^ clrForms;
         private: ::Windows::UI::Xaml::Controls::Button^ saveData;
         private: ::Windows::UI::Xaml::Controls::Button^ dbTest;
+        private: ::Windows::UI::Xaml::Controls::Button^ deleteIndex;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ dbAge;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ dbAgeInput;
+        private: ::Windows::UI::Xaml::Controls::TextBlock^ dbIndex;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ dbIndexInput;
         private: ::Windows::UI::Xaml::Controls::Button^ calculate;
         private: ::Windows::UI::Xaml::Controls::TextBlock^ outputBox;
         private: ::Windows::UI::Xaml::Controls::TextBox^ firstTextBox;

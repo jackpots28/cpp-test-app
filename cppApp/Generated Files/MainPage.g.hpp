@@ -81,170 +81,197 @@ void ::cppApp::MainPage::Connect(int __connectionId, ::Platform::Object^ __targe
         break;
     case 9:
         {
+            this->deleteIndex = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
+            (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->deleteIndex))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
+                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::DeleteIndex_Click);
+        }
+        break;
+    case 10:
+        {
+            this->dbAge = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+        }
+        break;
+    case 11:
+        {
+            this->dbAgeInput = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+        }
+        break;
+    case 12:
+        {
+            this->dbIndex = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
+        }
+        break;
+    case 13:
+        {
+            this->dbIndexInput = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
+        }
+        break;
+    case 14:
+        {
             this->calculate = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
             (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->calculate))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
                 (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::Button_Click);
         }
         break;
-    case 10:
+    case 15:
         {
             this->outputBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 11:
+    case 16:
         {
             this->firstTextBox = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
         }
         break;
-    case 12:
+    case 17:
         {
             this->secValBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 13:
+    case 18:
         {
             this->outputVecSize = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 14:
+    case 19:
         {
             this->quantTitleBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 15:
+    case 20:
         {
             this->compartTitleNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 16:
+    case 21:
         {
             this->vecSize = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 17:
+    case 22:
         {
             this->frstIndexTitleBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 18:
+    case 23:
         {
             this->inputTxtBlock = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 19:
+    case 24:
         {
             this->addContact = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
             (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->addContact))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
                 (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::AddContact_Click);
         }
         break;
-    case 20:
+    case 25:
         {
             this->srchContact = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
             (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->srchContact))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
                 (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::SrchContact_Click);
         }
         break;
-    case 21:
+    case 26:
         {
             this->personName = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
         }
         break;
-    case 22:
+    case 27:
         {
             this->personNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
         }
         break;
-    case 23:
+    case 28:
         {
             this->findPerson = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
         }
         break;
-    case 24:
+    case 29:
         {
             this->numberResult = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 25:
+    case 30:
         {
             this->titlePersonName = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 26:
+    case 31:
         {
             this->titlePersonNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 27:
+    case 32:
         {
             this->compartTitle = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 28:
+    case 33:
         {
             this->titleForPersonSrch = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 29:
+    case 34:
         {
             this->indexFormsBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 30:
+    case 35:
         {
             this->nameFormsBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 31:
+    case 36:
         {
             this->numberFormsBox = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 32:
+    case 37:
         {
             this->formsTextBlk = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 33:
+    case 38:
         {
             this->formsEditNameDis = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 34:
+    case 39:
         {
             this->formsEditIndexDis = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 35:
+    case 40:
         {
             this->formsContainerName = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 36:
+    case 41:
         {
             this->formsContainerNumber = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 37:
+    case 42:
         {
             this->indexCounter = safe_cast<::Windows::UI::Xaml::Controls::TextBlock^>(__target);
         }
         break;
-    case 38:
+    case 43:
         {
             this->editForm = safe_cast<::Windows::UI::Xaml::Controls::Button^>(__target);
             (safe_cast<::Windows::UI::Xaml::Controls::Button^>(this->editForm))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::cppApp::MainPage::*)
                 (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&MainPage::EditForm_Click);
         }
         break;
-    case 39:
+    case 44:
         {
             this->indexToEdit = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
             (safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(this->indexToEdit))->TextChanged += ref new ::Windows::UI::Xaml::Controls::TextChangedEventHandler(this, (void (::cppApp::MainPage::*)
                 (::Platform::Object^, ::Windows::UI::Xaml::Controls::TextChangedEventArgs^))&MainPage::IndexToEdit_TextChanged);
         }
         break;
-    case 40:
+    case 45:
         {
             this->editName = safe_cast<::Windows::UI::Xaml::Controls::TextBox^>(__target);
         }

@@ -22,7 +22,7 @@
         </AppBar>
     </Page.TopAppBar>
 
-    <Grid Margin="226,124,0,0" Height="660" VerticalAlignment="Top" HorizontalAlignment="Left" Width="865">
+    <Grid Margin="16,40,0,0" Height="841" VerticalAlignment="Top" HorizontalAlignment="Left" Width="865">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="109*"/>
             <ColumnDefinition Width="64*"/>
@@ -52,7 +52,7 @@
         </Border>
 
         <!--bottom canvas area "person lookup"-->
-        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" Height="210" Margin="0,357,35,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="436">
+        <Border BorderBrush="#FFDBDBDB" BorderThickness="5" Height="210" Margin="0,300,35,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="436">
             <Canvas HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="426" Background="#FFF27980">
                 <!-- textBlocks, Buttons, textBoxes -->
                 <Button x:Name="addContact" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Width="47" Canvas.Left="35" Canvas.Top="78" Click="AddContact_Click"/>
@@ -98,29 +98,19 @@
                 </TextBlock>
             </Canvas>
         </Border>
-        
+
         <!-- Test DB button (temp)-->
-        <Border>
-            <Canvas>
-                <Button x:Name="dbTest" Content="To test DB" Height="30" Width="300" Margin="200,600,0,0" VerticalAlignment="Top" Background="White" Click="DbTest_Click">
-                    <!-- style change for the button hover color -->
-                    <Button.Resources>
-                        <ResourceDictionary>
-                            <ResourceDictionary.ThemeDictionaries>
-                                <ResourceDictionary x:Key="Dark">
-                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Red"/>
-                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
-                                </ResourceDictionary>
-                                <ResourceDictionary x:Key="Light">
-                                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Red"/>
-                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
-                                </ResourceDictionary>
-                            </ResourceDictionary.ThemeDictionaries>
-                        </ResourceDictionary>
-                    </Button.Resources>
-                </Button>
+        <Border Background="#FF9D9D9D" Height="190" Width="436" Margin="73,450,36.143,10" BorderBrush="#FF9FEFFF" BorderThickness="5">
+            <Canvas Width="426" Height="180">
+                <Button x:Name="dbTest" Content="Open/Close DB" Height="30" Width="150" Margin="75,60,0,0" Click="DbTest_Click" Canvas.Left="-49" Canvas.Top="-39"/>
+
+                <Button x:Name="deleteIndex" Content="Delete Index" Height="30" Width="100" Margin="240, 20, 0, 0" Canvas.Left="16" Click="DeleteIndex_Click"/>
+                <TextBlock x:Name="dbAge" Text="Input age:" TextAlignment="Center" Height="20" Width="100" Margin="10,70,0,0" Canvas.Top="6"/>
+                <TextBox x:Name="dbAgeInput" Height="35" Width="70" Margin="99,70,0,0" Text="" TextWrapping="Wrap" Canvas.Left="10"/>
+                <TextBlock x:Name="dbIndex" Text="Input index:" TextAlignment="Center" Height="20" Width="100" Margin="10,127,0,0"/>
+                <TextBox x:Name="dbIndexInput" Height="35" Width="70" Margin="99,100,0,0" Text="" TextWrapping="Wrap" Canvas.Left="10" Canvas.Top="19"/>
             </Canvas>
         </Border>
-        
+
     </Grid>
 </Page>

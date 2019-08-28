@@ -28,6 +28,7 @@ namespace cppApp
 		void IndexToEdit_TextChanged(Platform::Object^ sender, Windows::UI::Xaml::Controls::TextChangedEventArgs^ e);
 
 		void DbTest_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void DeleteIndex_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 	
 }
